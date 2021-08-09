@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
   getCars(){
     this.carService.getCars().subscribe(
       data => {this.cars = data},
-      err => console.log(err),
+      err => console.error(err),
       () => console.log('cars loaded')
     );
   }
