@@ -10,11 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewRegistrationComponent implements OnInit {
 
   public carReg;
+  public tempId=this.route.snapshot.params.id;
 
   constructor(private carService: CarService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getCarReg(this.route.snapshot.params.id);
+    this.getCarReg(this.tempId);
   }
 
   getCarReg(id:number){
@@ -27,4 +28,12 @@ export class ViewRegistrationComponent implements OnInit {
     );
   }
 
+
+  deleteCarFromRegistration(){
+    this.carService.deleteCar(this.tempId).subscribe(
+      err => console.error(err),
+      () => console.log('car deleted')
+    )
+
+  }
 }

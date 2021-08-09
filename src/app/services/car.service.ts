@@ -26,5 +26,9 @@ export class CarService {
     let body = JSON.stringify(car);
     return this.http.post('/server/api/v1/cars', body, httpOptions);
   }
+
+  deleteCar(id:number){
+    return this.http.delete('/server/api/v1/cars/'+id);
+  }
    
 }
