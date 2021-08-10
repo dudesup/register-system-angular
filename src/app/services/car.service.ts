@@ -15,11 +15,15 @@ export class CarService {
   constructor(private http:HttpClient)  { }
 
   getCars(){
-    return this.http.get('/server/api/v1/cars');
+    return this.http.get('/server/api/v1/cars', {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') || '' })
+    });
   }
 
   getCar(id: number){
-    return this.http.get('/server/api/v1/cars/'+id)
+    return this.http.get('/server/api/v1/cars/'+id, {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') || '' })
+    });
   }
 
   createCarRegistration(car){
