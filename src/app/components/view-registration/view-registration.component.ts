@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-registration',
@@ -12,7 +12,7 @@ export class ViewRegistrationComponent implements OnInit {
   public carReg;
   public tempId=this.route.snapshot.params.id;
 
-  constructor(private carService: CarService, private route: ActivatedRoute) { }
+  constructor(private carService: CarService, private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.getCarReg(this.tempId);
@@ -34,6 +34,7 @@ export class ViewRegistrationComponent implements OnInit {
       err => console.error(err),
       () => console.log('car deleted')
     )
+    this.router.navigate(['/admin']);
 
   }
 }

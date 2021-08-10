@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { CarService } from 'src/app/services/car.service';
 export class AdminComponent implements OnInit {
   public cars;
 
-  constructor(private carService:CarService) { }
+  constructor(private carService:CarService, private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCars();
@@ -21,6 +23,14 @@ export class AdminComponent implements OnInit {
       err => console.error(err),
       () => console.log('cars loaded')
     );
+  }
+
+  logout(){
+    this.authService.logout();
+  }
+
+  goToForm(){
+    this.router.navigate(['']);
   }
 
 

@@ -8,8 +8,8 @@ import * as auth0 from 'auth0-js';
 })
 export class AuthService {
   auth0 = new auth0.WebAuth({
-    clientID: 'my_client_id',
-    domain: 'my_domain',
+    clientID: '0gyY78yDUiQcaQ6WFwbAqbe9X5mEs7lc',
+    domain: 'dudesup.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'http://localhost:8080',
     redirectUri: 'http://localhost:4200/callback',
@@ -47,7 +47,9 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    this.router.navigate(['/']);
+    this.auth0.logout();
+    this.router.navigate(['']);
+    
   }
 
   public isAuthenticated(): boolean {

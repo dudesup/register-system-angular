@@ -12,6 +12,8 @@ import { ViewRegistrationComponent } from './components/view-registration/view-r
 import { CallbackComponent } from './components/callback/callback.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
+import {CarouselModule} from 'primeng/carousel';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AuthGuard } from './services/auth.guard';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule
   ],
   providers: [CarService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -7,9 +7,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CarService {
 
   constructor(private http:HttpClient)  { }
@@ -32,7 +30,9 @@ export class CarService {
   }
 
   deleteCar(id:number){
-    return this.http.delete('/server/api/v1/cars/'+id);
+    return this.http.delete('/server/api/v1/cars/'+id, {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') || '' })
+    });
   }
    
 }
